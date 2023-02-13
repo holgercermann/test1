@@ -16,4 +16,10 @@ public class ScreenLockTest {
         assertEquals(8, sl.calculateCombinations('E',2));
         assertEquals(256, sl.calculateCombinations('E',4));
     }
+
+    @Test
+    public void bascis2 (){
+        
+        assertEquals(5, sl.calculateCombinations('C',2));
+    }
 }
