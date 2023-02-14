@@ -1,3 +1,4 @@
+package Sudoku;
 import java.util.ArrayList;
 
 public class SudokuSolver {
@@ -7,7 +8,7 @@ public class SudokuSolver {
     int[][] grid_compare = new int[9][9];
     int[] i_rows = new int[9];
     int[] i_cols = new int[9];
-    int[] i_blks = new int[9];
+    int[] i_blocks = new int[9];
     
     Boolean isValidFast(int x, int y, int val)
     {
@@ -15,7 +16,7 @@ public class SudokuSolver {
             return false;
         if ((i_cols[y] & (1<<val)) > 0)
             return false;
-        if ((i_blks[((int)(x/3)) + ((int)(y/3)) * 3] & (1<<val))>0)
+        if ((i_blocks[((int)(x/3)) + ((int)(y/3)) * 3] & (1<<val))>0)
             return false;
         return true;
     }
@@ -46,14 +47,14 @@ public class SudokuSolver {
         for (int i = 0; i < 9; i++) {
             i_rows[i]=0;
             i_cols[i]=0;
-            i_blks[i]=0;
+            i_blocks[i]=0;
         }       
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
                 if (grid[x][y] > 0) {
                     i_rows[x] += (1<<grid[x][y]);
                     i_cols[y] += (1<<grid[x][y]);
-                    i_blks[((int)(x/3)) + ((int)(y/3)) * 3] += (1<<grid[x][y]);                
+                    i_blocks[((int)(x/3)) + ((int)(y/3)) * 3] += (1<<grid[x][y]);                
                 }
             }
         }
@@ -74,7 +75,7 @@ public class SudokuSolver {
                     grid[x][y] = val;
                     i_rows[x] += (1<<val);
                     i_cols[y] += (1<<val);
-                    i_blks[((int)(x/3)) + ((int)(y/3)) * 3] += (1<<val);
+                    i_blocks[((int)(x/3)) + ((int)(y/3)) * 3] += (1<<val);
                     //System.out.println("--> " + position + " with " + val);
                     if (solve(position+1, ascending))
                         return true;
@@ -83,7 +84,7 @@ public class SudokuSolver {
                         //System.out.println("nope");
                         i_rows[x] -= (1<<val);
                         i_cols[y] -= (1<<val);
-                        i_blks[((int)(x/3)) + ((int)(y/3)) * 3] -= (1<<val);
+                        i_blocks[((int)(x/3)) + ((int)(y/3)) * 3] -= (1<<val);
                         grid[x][y] = 0;
                     }
                 }

@@ -1,3 +1,4 @@
+package Snail;
 public class Snail {
     static int[][] a;
     

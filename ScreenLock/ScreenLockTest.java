@@ -1,13 +1,13 @@
+package ScreenLock;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import org.junit.runners.JUnit4;
 
-// TODO: Replace examples and use TDD development by writing your own tests
+import static org.junit.Assert.assertEquals;
+
 
 public class ScreenLockTest {
     ScreenLock sl = new ScreenLock();
     @Test
-    public void bascis (){
+    public void basis (){
         assertEquals(0, sl.calculateCombinations('A',10));
         assertEquals(0, sl.calculateCombinations('A',0));
         assertEquals(0, sl.calculateCombinations('E',14));
@@ -18,7 +18,7 @@ public class ScreenLockTest {
     }
 
     @Test
-    public void bascis2 (){
+    public void basis2 (){
         
         assertEquals(5, sl.calculateCombinations('C',2));
     }
